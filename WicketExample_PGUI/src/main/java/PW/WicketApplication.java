@@ -1,5 +1,6 @@
 package PW;
 
+import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
@@ -29,5 +30,10 @@ public class WicketApplication extends WebApplication
 		super.init();
 
 		// add your configuration here
+	}
+
+	@Override
+	public RuntimeConfigurationType getConfigurationType() {
+		return RuntimeConfigurationType.DEPLOYMENT;
 	}
 }

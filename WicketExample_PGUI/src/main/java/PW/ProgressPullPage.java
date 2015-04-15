@@ -73,7 +73,8 @@ public class ProgressPullPage extends BasePage {
 						break;
 				}
 
-				finished = true;
+				if (!stopped)
+					finished = true;
 			}
 		}.start();
 
@@ -86,7 +87,7 @@ public class ProgressPullPage extends BasePage {
 
 			@Override
 			public boolean isVisible() {
-				return !finished;
+				return !finished && !stopped;
 			}
 		});
 
@@ -94,6 +95,12 @@ public class ProgressPullPage extends BasePage {
 			@Override
 			public boolean isVisible() {
 				return finished;
+			}
+		});
+		contPullProg.add(new WebMarkupContainer("contBreaked") {
+			@Override
+			public boolean isVisible() {
+				return stopped;
 			}
 		});
     }
